@@ -1,0 +1,11 @@
+project: savantenvs/xemu
+target: xbox-smbus
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xbox-smbus/testsuite
+cmds:
+  - cmd: /mayhem/build/targets/xbox-smbus/qemu-fuzz-i386-target-generic-fuzz
+    libfuzzer: true
+    timeout: 30
+    env:
+      QEMU_FUZZ_OBJECTS: xbox-smbus

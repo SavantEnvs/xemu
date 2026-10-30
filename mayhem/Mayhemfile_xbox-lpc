@@ -1,0 +1,11 @@
+project: savantenvs/xemu
+target: xbox-lpc
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xbox-lpc/testsuite
+cmds:
+  - cmd: /mayhem/build/targets/xbox-lpc/qemu-fuzz-i386-target-generic-fuzz
+    libfuzzer: true
+    timeout: 30
+    env:
+      QEMU_FUZZ_OBJECTS: xbox-lpc
