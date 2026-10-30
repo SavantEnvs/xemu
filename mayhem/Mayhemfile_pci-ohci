@@ -1,0 +1,11 @@
+project: savantenvs/xemu
+target: pci-ohci
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/pci-ohci/testsuite
+cmds:
+  - cmd: /mayhem/build/targets/pci-ohci/qemu-fuzz-i386-target-generic-fuzz
+    libfuzzer: true
+    timeout: 30
+    env:
+      QEMU_FUZZ_OBJECTS: pci-ohci

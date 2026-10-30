@@ -1,0 +1,11 @@
+project: savantenvs/xemu
+target: nvnet
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/nvnet/testsuite
+cmds:
+  - cmd: /mayhem/build/targets/nvnet/qemu-fuzz-i386-target-generic-fuzz
+    libfuzzer: true
+    timeout: 30
+    env:
+      QEMU_FUZZ_OBJECTS: nvnet
